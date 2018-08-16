@@ -26,6 +26,7 @@ spring:
       password: Zjqyznkj123456
       port: 6379
       pool:
+      jedis:
         max-active: 8
         max-wait: 1000
       timeout: 1000

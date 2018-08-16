@@ -26,18 +26,10 @@ spring:
     password: test123
     port: 6379
     pool:
+    jedis:
       max-active: 8
       max-wait: 1000
     timeout: 1000
-
-eureka:
-  client:
-    service-url:
-       defaultZone: http://106.15.47.133:10000/eureka/
-
-  instance:
-    prefer-ip-address: true
-    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
 
 
 # LOGGING

@@ -9,11 +9,43 @@ spring:
       initial-size: 5
       min-idle: 5
       max-idle: 10
+  data:
+    elasticsearch:
+      cluster-name: jjdctest
+      repositories:
+        enabled: true
+#      ip: 10.31.204.201
+      ip: 47.100.82.43
+      port: 9300
+      index: app_position_statistics
+      type: openMiniApps
+
+  redis:
+    database: 4
+    host: 139.196.194.172
+    password: test123
+    port: 6379
+    pool:
+    jedis:
+      max-active: 8
+      max-wait: 1000
+    timeout: 1000
 
 
 # LOGGING
 logging:
     level:
        com.example: DEBUG
-#    config: classpath:logback/logback-dev.xml
-    config: classpath:logback/logback-logstash.xml
+    config: classpath:logback/logback-dev.xml
+mybatis:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  config-location: classpath:mybatis/mybatis.xml
+
+
+sms.prefix: applet
+sms.url: http://139.196.194.172:8080/sms/captcha
+sms.checkUrl: http://139.196.194.172:8080/sms/ckCaptcha
+
+#小程序单位为分
+pay.amount: 100
