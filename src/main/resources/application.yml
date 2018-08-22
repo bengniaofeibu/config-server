@@ -1,30 +1,23 @@
 server:
-  port: 8080
-
-
+  port: 8081
 spring:
-  freemarker:
-    prefer-file-system-access: false
   application:
-       name: demo2
-  mvc:
-    view:
-      prefix: /jsp/
-      suffix: .jsp
-  profiles:
-#    active: local
-    active: dev
-#    active: prod
-  http:
-    encoding:
-      charset: utf-8
-      enabled: true #是否开启http的编码支持
-  jackson:
-      date-format: yyyy-MM-dd HH:mm:ss
-  aop:
-      proxy-target-class: true
-  jmx:
-    default-domain: demo2
+       name: demoConfigServer
+  cloud:
+     config:
+       server:
+          git:
+            uri: http://gitlab.99bicycle.com/tonghengzhen/config-server.git
+            username: tonghengzhen
+            password: thz010203
+
+eureka:
+  client:
+    service-url:
+       defaultZone: http://106.15.47.133:10000/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
 
 # spring boot 监控
 management:
