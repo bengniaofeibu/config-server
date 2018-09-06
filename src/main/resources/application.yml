@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8191
 spring:
   application:
        name: publicconfigserver
@@ -10,6 +10,13 @@ spring:
             uri: http://gitlab.99bicycle.com/tonghengzhen/config-server.git
             username: tonghengzhen
             password: thz010203
+            force-pull: true
+
+  rabbitmq:
+    host: 10.31.188.92
+    port: 5672
+    username: admin
+    password: admin
 
 eureka:
   client:
@@ -17,7 +24,7 @@ eureka:
        defaultZone: http://106.15.47.133:10000/eureka/
   instance:
     prefer-ip-address: true
-    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
 
 # spring boot 监控
 management:
